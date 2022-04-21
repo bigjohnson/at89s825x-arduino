@@ -34,7 +34,7 @@ In the blink directory there is `blinky.hex` that can be used as a sample progra
 
 The program and data file names are in config.py
 
-AT89S8252 programs:
+### AT89S8252
 
 Program the microcontroller by running the script `writeprogram.py`.
 
@@ -44,7 +44,7 @@ Program the microcontroller by running the script `writeprogram.py`.
 * If you want dump the data from chip to file run `readdata.py`
 * If you want program lock bits on chip `writelock.py`
 
-AT89S8253 programs:
+### AT89S8253
 
 Program the microcontroller by running the script `writeprogram3.py`.
 

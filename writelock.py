@@ -63,4 +63,5 @@ with serial.Serial(p, 9600) as ser:
     print(ser.readline().decode('utf-8'))
 
     ser.write(b'\x40') # End programming
+    print(ser.readline().decode('utf-8'))
     print('Done.')

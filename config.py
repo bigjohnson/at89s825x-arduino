@@ -1,10 +1,11 @@
 # Configuration options
 
 # serialPort = '/dev/ttyACM0'
-serialPort = 'COM8'
+serialPort = 'COM28'
 
 ## Code Space
-code_targetFile = 'blink/blink.hex'
+#code_targetFile = 'blink/blink.hex'
+code_targetFile = 'blink/eidefirst.hex'
 code_dumpFile   = 'blink/programdump.hex' 
 
 ## Data Space

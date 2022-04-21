@@ -9,11 +9,11 @@ print(p)
 with serial.Serial(p, 9600) as ser:
     time.sleep(2)
     print(ser.readline().decode('utf-8'))
-    ser.write(b'\x50') # Enable programming
+    ser.write(b'\x60') # Enable programming
     time.sleep(0.05)
     print(ser.readline().decode('utf-8'))
     print('Erasing...')
-    ser.write(b'\x53')
+    ser.write(b'\x63')
     time.sleep(0.05)
     print(ser.readline().decode('utf-8'))
 

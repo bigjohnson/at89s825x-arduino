@@ -17,7 +17,7 @@ Connect the target microcontroller to VCC and GND, and add a crystal between XTA
 | MOSI  (Pin 6) | Pin 11  |
 | MISO  (Pin 7) | Pin 12  |
 | SCK (Pin 8)   | Pin 13  |
-| GND           | Pin GND  |
+| GND (Pin 20)  | Pin GND |
 
 ## Software
 

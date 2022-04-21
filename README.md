@@ -62,8 +62,8 @@ Program the microcontroller by running the script `writeprogram3.py`.
 * If you want dump the data fast from chip to file run `readdatafast3.py`
 * If you want check the chip data from a file run `verifydata3.py`
 * If you want check the chip data fast from a file run `verifydatafast3.py`
-* If you want program lock bits on chip `writelock3.py`
-* If you want program fuses bits on chip `writefuses3.py`
+* If you want program lock bits on chip `writelock3.py` (actually unimplemented)
+* If you want program fuses bits on chip `writefuses3.py` (actually unimplemented)
 * If you want read lock bits on chip `readlock3.py`
 * If you want read fuses bits on chip `readfuses3.py`
 

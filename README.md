@@ -41,6 +41,7 @@ Program the microcontroller by running the script `writeprogram.py`.
 * If you want erase the chip run `eraser.py` it erase both program and data space.
 * If you want dump the program from chip to file run `readprogram.py`
 * If you want check the chip program from a file run `verifyprogram.py`
+* If you want write data to chip run `writedata.py`.
 * If you want dump the data from chip to file run `readdata.py`
 * If you want check the chip data from a file run `verifydata.py`
 * If you want program lock bits on chip `writelock.py`
@@ -52,6 +53,7 @@ Program the microcontroller by running the script `writeprogram3.py`.
 * If you want erase the chip run `eraser3.py` it erase both program and data space.
 * If you want dump the program from chip to file run `readprogram3.py`
 * If you want check the chip program from a file run `verifyprogram3.py`
+* If you want write data to chip run `writedata.py`.
 * If you want dump the data from chip to file run `readdata3.py`
 * If you want check the chip data from a file run `verifydata3.py`
 * If you want program lock bits on chip `writelock3.py`

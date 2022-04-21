@@ -42,7 +42,7 @@ else:
     print("error2")
 
 if error == 1:
-    print("Fuses must be a nunmber between 1 and 3.")
+    print("Fuses must be a number between 1 and 3.")
     quit()
 
 # Serial port name

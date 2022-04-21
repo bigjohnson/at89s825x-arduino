@@ -5,19 +5,21 @@ from config import *
 
 # Path to hex file
 f = data_targetFile
-print(f)
+print('Reading file: ' + f)
 
 # Serial port name
 p = serialPort
-print(p)
+print('Programmer port = ' + p)
 
 # Read hex file
 ih = IntelHex()
 
 ih.fromfile(f, format='hex')
 
-if ih.addresses()[len(ih.addresses()) - 1]  > 0x7FF:
-    a = input('The data is too large, max data is 2048 bytes, continue? y/n: ')
+if ih.addresses()[len(ih.addresses()) - 1]  >=  at89s8253_max_data:
+    print('The file is too large ' + hex(ih.addresses()[len(ih.addresses()) - 1]) + '!')
+    print('Max space is ' + hex(at89s8253_max_data) + ' bytes, extra data will be ignored!')
+    a = input( 'Continue? y/n: ')
     if  a != 'Y' and a != 'y':
         quit()
 
@@ -49,10 +51,11 @@ with serial.Serial(p, 9600) as ser:
     err = False
     for i in range(0, len(ih.addresses())):
         addr = ih.addresses()[i]
-        if addr <= 0x7FF:
+        if addr < at89s8253_max_data:
+            if conta == 255:
+                print(hex(addr))
             if conta == 256:
                 conta = 0
-                print(hex(addr))
             conta += 1
             ser.write(b'\x64')
             ser.write(bytes([addr//256])) # high address byte

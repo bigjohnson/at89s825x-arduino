@@ -5,11 +5,11 @@ from config import *
 
 # Path to hex file
 f = code_dumpFile
-print(f)
+print('Reading file: ' + f)
 
 # Serial port name
 p = serialPort
-print(p)
+print('Programmer port = ' + p)
 
 # Read hex file
 ih = IntelHex()
@@ -37,11 +37,12 @@ with serial.Serial(p, 9600) as ser:
     print('Reading...')
     conta = 0
     #err = False
-    for i in range(0x0, 0x1FFF):
+    for i in range(0x0, at89s8252_max_program):
         #addr = ih.addresses()[i]
+        if conta == 255:
+            print(hex(i))
         if conta == 256:
             conta = 0
-            print(hex(i))
         conta += 1
         ser.write(b'\x52')
         ser.write(bytes([i//256])) # high address byte

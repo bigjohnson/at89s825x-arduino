@@ -4,11 +4,14 @@ from intelhex import IntelHex
 from config import *
 
 # Path to hex file
-f = data_dumpFile
+f = code_dumpFile
 print('Reading file: ' + f)
 
 # Serial port name
 p = serialPort
+print(p)
+
+# Read hex file
 print('Programmer port = ' + p)
 
 # Read hex file
@@ -35,20 +38,24 @@ with serial.Serial(p, 9600) as ser:
     #a = input('Programming done. Do you wish to verify? y/n: ')
     #if  a == 'Y' or a == 'y':
     print('Reading...')
-    #err = False
     conta = 0
-    for i in range(0x0, at89s8253_max_data):
+    #err = False
+    for i in range(0x0, at89s8253_max_program, 64):
         #addr = ih.addresses()[i]
-        if conta == 255:
-            print(hex(i))
-        if conta == 256:
-            conta = 0
-        conta += 1
-        ser.write(b'\x64')
+        #if (conta - 1) == 255:
+        #    print(hex(i))            
+        #if conta == 256:
+        #    conta = 0
+        #conta += 64
+        print(hex(i) + " ", end = '')
+        ser.write(b'\x72')
         ser.write(bytes([i//256])) # high address byte
         ser.write(bytes([i%256]))  # low address byte
-        k = int(ser.readline().decode('utf-8'), 16)
-        ih[i] = k
+        for o in range(0, 64):
+            k = int(ser.readline().decode('utf-8'), 16)
+            print('.', end = '')
+            ih[i+o] = k
+        print()
         #print(k);
         #     if k != ih[addr]:
         #         print('Error at address' + hex(addr))

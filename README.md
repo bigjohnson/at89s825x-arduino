@@ -67,4 +67,6 @@ Program the microcontroller by running the script `writeprogram3.py`.
 * If you want read lock bits on chip `readlock3.py`
 * If you want read fuses bits on chip `readfuses3.py`
 
+the fast version of the programs use the new page mode of the AT89S8253
+
 

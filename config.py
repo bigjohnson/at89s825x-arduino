@@ -1,7 +1,7 @@
 # Configuration options
 
 # serialPort = '/dev/ttyACM0'
-serialPort = 'COM28'
+serialPort = 'COM29'
 
 ## Code Space
 # file used for chip programming

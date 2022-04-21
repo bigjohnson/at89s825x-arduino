@@ -176,14 +176,14 @@ void loop() {
         SPI.setDataMode(SPI_MODE0);
         SPI.begin();
         progEnable2();
-        Serial.println("Programming mode enabled 89S8252.");
+        Serial.println("Programming mode enabled AT89S8252.");
         break;
 
       case 0x60: // Programming enable
         SPI.setDataMode(SPI_MODE1);
         SPI.begin();
         progEnable3();
-        Serial.println("Programming mode enabled 89S8253.");
+        Serial.println("Programming mode enabled AT89S8253.");
         break;
 
       case 0x51: // Write to code memory
@@ -220,12 +220,12 @@ void loop() {
 
       case 0x53: // Erase chip
         eraseChip2();
-        Serial.println("Chip erased 89S8252.");
+        Serial.println("Chip erased AT89S8252.");
         break;
 
       case 0x63: // Erase chip
         eraseChip3();
-        Serial.println("Chip erased 89S8253.");
+        Serial.println("Chip erased AT89S8253.");
         break;
 
       case 0x54: // Read from data memory
@@ -263,7 +263,7 @@ void loop() {
       case 0x56: // Write lock
         pgm_address = Serial.read();
         writeLock2(pgm_address);
-        Serial.println("Lock bits programmed 89S8252.");
+        Serial.println("Lock bits programmed AT89S8252.");
         break;
 
       case 0x67: // Read lock

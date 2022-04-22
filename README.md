@@ -8,7 +8,7 @@ This is a programmer for the Atmel AT89S8252 and AT89S8253 microcontroller throu
 
 Upload `progammer.ino` to your Arduino board.
 
-Connect the target microcontroller to VCC and GND, and add a crystal between XTAL1 and XTAL2. Make the following connections between the Arduino and the AT89S8252/AT89S8252.
+Connect the target microcontroller to VCC and GND, and add a crystal between XTAL1 and XTAL2. Make the following connections between the Arduino and the AT89S8252/AT89S8253.
 
 
 | AT89S8252     | Arduino |

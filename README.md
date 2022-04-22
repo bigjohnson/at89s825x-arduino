@@ -1,6 +1,6 @@
 # at89s825x-arduino
 
-This is a programmer for the Atmel AT89S8252 and AT89S8252 microcontroller through Arduino's SPI port from an intel hex file.
+This is a programmer for the Atmel AT89S8252 and AT89S8253 microcontroller through Arduino's SPI port from an intel hex file.
 
 # Installation
 

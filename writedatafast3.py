@@ -63,8 +63,9 @@ with serial.Serial(p, 9600) as ser:
                 #time.sleep(0.05)
                 ser.readline()
                 
-    a = input('Programming done. Do you wish to verify? y/n: ')
+    #a = input('Programming done. Do you wish to verify? y/n: ')
     #conta = 0
+    a = 'y'
     if  a == 'Y' or a == 'y':
         print('Verifying...')
         err = False

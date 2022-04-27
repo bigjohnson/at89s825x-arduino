@@ -1,7 +1,7 @@
 # Configuration options
 
 # serialPort = '/dev/ttyACM0'
-serialPort = 'COM29'
+serialPort = 'COM31'
 
 at89s8252_max_program = 0x2000
 at89s8252_max_data = 0x800
@@ -13,9 +13,10 @@ at89s8253_max_atmel_sgn = 0x40
 
 ## Code Space
 # file used for chip programming
-code_targetFile = 'blink/blink.hex'
+#code_targetFile = 'blink/blink.hex'
+code_targetFile = 'C:/Users/alberto/Documents/sdcc/eidefirstx/build/Debug/eidefirst.hex'
 # file used for save chip read programming content
-code_dumpFile   = 'blink/programdump.hex' 
+code_dumpFile   = 'blink/programdump.hex'
 
 ## Data Space
 # file used for chip programming

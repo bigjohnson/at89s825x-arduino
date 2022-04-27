@@ -13,8 +13,7 @@ at89s8253_max_atmel_sgn = 0x40
 
 ## Code Space
 # file used for chip programming
-#code_targetFile = 'blink/blink.hex'
-code_targetFile = 'C:/Users/alberto/Documents/sdcc/eidefirstx/build/Debug/eidefirst.hex'
+code_targetFile = 'blink/blink.hex'
 # file used for save chip read programming content
 code_dumpFile   = 'blink/programdump.hex'
 

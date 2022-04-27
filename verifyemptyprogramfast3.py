@@ -4,8 +4,8 @@ from intelhex import IntelHex
 from config import *
 
 # Path to hex file
-f = code_dumpFile
-print('Reading file: ' + f)
+#f = code_dumpFile
+#print('Reading file: ' + f)
 
 # Serial port name
 p = serialPort
@@ -15,7 +15,7 @@ print(p)
 print('Programmer port = ' + p)
 
 # Read hex file
-ih = IntelHex()
+#ih = IntelHex()
 #ih.fromfile(f, format='hex')
 
 
@@ -38,22 +38,30 @@ with serial.Serial(p, 9600) as ser:
     #a = input('Programming done. Do you wish to verify? y/n: ')
     #if  a == 'Y' or a == 'y':
     print('Reading...')
-    conta = 0
-    #err = False
-    for i in range(0x0, at89s8253_max_program):
+    #conta = 0
+    err = False
+    for i in range(0x0, at89s8253_max_program, 64):
         #addr = ih.addresses()[i]
-        if conta == 0:
-            print()
-            print(hex(i) + ' ', end='')               
-        if conta == 63:
-            conta = -1
-        conta += 1
-        ser.write(b'\x62')
+        #if (conta - 1) == 255:
+        #    print(hex(i))            
+        #if conta == 256:
+        #    conta = 0
+        #conta += 64
+        print(hex(i) + " ", end = '')
+        ser.write(b'\x72')
         ser.write(bytes([i//256])) # high address byte
         ser.write(bytes([i%256]))  # low address byte
-        k = int(ser.readline().decode('utf-8'), 16)
-        ih[i] = k
-        print('.', end = '')
+        for o in range(0, 64):
+            k = int(ser.readline().decode('utf-8'), 16)
+            #print('.', end = '')
+            #ih[i+o] = k
+            if k != 255:
+                #print('Error at address ' + hex(i) + ' not empty!')
+                print('E', end = '')
+                err = True
+            else:
+                print('.', end = '')
+        print()
         #print(k);
         #     if k != ih[addr]:
         #         print('Error at address' + hex(addr))
@@ -63,8 +71,12 @@ with serial.Serial(p, 9600) as ser:
         #     print('Verification complete.')
         #
     print()
+    if not err:
+        print('Empty verification complete.')
+    else:
+        print('The chip is not empty')
     ser.write(b'\x40') # End programming
     print(ser.readline().decode('utf-8'))
-    ih.dump()
-    ih.write_hex_file(f)
+    #ih.dump()
+    #ih.write_hex_file(f)
     print('Done.')

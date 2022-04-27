@@ -52,20 +52,25 @@ with serial.Serial(p, 9600) as ser:
     for i in range(0, len(ih.addresses())):
         addr = ih.addresses()[i]
         if addr < at89s8253_max_data:
-            if conta == 255:
-                print(hex(addr))
-            if conta == 256:
-                conta = 0
+            if conta == 0:
+                print()
+                print(hex(i) + ' ', end='')
+            if conta == 31:
+                conta = -1
             conta += 1
             ser.write(b'\x64')
             ser.write(bytes([addr//256])) # high address byte
             ser.write(bytes([addr%256]))  # low address byte
             k = int(ser.readline().decode('utf-8'), 16)
             if k != ih[addr]:
-                print('Error at address' + hex(addr))
-                print('Got %d, was %d' % (k, ih[addr]))
+                #print('Error at address' + hex(addr))
+                #print('Got %d, was %d' % (k, ih[addr]))
+                print('E', end = '')
                 err = True
-
+            else:
+                print('.', end = '')
+  
+    print()
     if not err:
         print('Verification complete.')
 

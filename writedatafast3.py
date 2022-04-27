@@ -79,13 +79,16 @@ with serial.Serial(p, 9600) as ser:
                 ser.write(bytes([addr%256]))  # low address byte
                 for o in range(0, 32):
                     k = int(ser.readline().decode('utf-8'), 16)
-                    print('.', end = '')
+                    #print('.', end = '')
                     ultimo = addr + o;
                     if k != ih[ultimo]:
-                        print()
-                        print('Error at address' + hex(addr))
-                        print('Got %d, was %d' % (k, ih[addr]))
+                        #print()
+                        #print('Error at address' + hex(addr))
+                        #print('Got %d, was %d' % (k, ih[addr]))
+                        print('E', end = '')
                         err = True
+                    else:
+                        print('.', end = '')
                 print()
                         
       #  if ultimo != ih.addresses()[len(ih.addresses()) - 2 ]:
@@ -101,10 +104,11 @@ with serial.Serial(p, 9600) as ser:
        #                 print('Error at address' + hex(addr))
        #                print('Got %d, was %d' % (k, ih[addr]))
        #                 err = True    
-                
-        if not err:
-            print('Verification complete.')
 
+        if not err:
+            print('Program writing complete.')
+        else: 
+            print('Program writing faillure.')
     ser.write(b'\x40') # End programming
     print(ser.readline().decode('utf-8'))
     print('Done.')

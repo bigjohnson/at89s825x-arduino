@@ -64,6 +64,7 @@ with serial.Serial(p, 9600) as ser:
         # if not err:
         #     print('Verification complete.')
         #
+    print()
     ser.write(b'\x40') # End programming
     print(ser.readline().decode('utf-8'))
     ih.dump()

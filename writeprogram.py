@@ -34,10 +34,11 @@ with serial.Serial(p, 9600) as ser:
     for i in range(0, len(ih.addresses())):
         addr = ih.addresses()[i]
         if addr < at89s8252_max_program:
-            if conta == 255:
-                print(hex(addr))
-            if conta == 256:
-                conta = 0
+            if conta == 0:
+                print()
+                print(hex(i) + ' ', end='')
+            if conta == 63:
+                conta = -1
             conta += 1
             ser.write(b'\x51')
             ser.write(bytes([addr//256])) # high address byte
@@ -45,7 +46,8 @@ with serial.Serial(p, 9600) as ser:
             ser.write(bytes([ih[addr]]))  # data byte
             #time.sleep(0.05)
             ser.readline()
-
+            print('.', end = '')
+    print()
     #a = input('Programming done. Do you wish to verify? y/n: ')
     a = 'y'
     conta = 0
@@ -55,23 +57,28 @@ with serial.Serial(p, 9600) as ser:
         for i in range(0, len(ih.addresses())):
             addr = ih.addresses()[i]
             if addr < at89s8252_max_program:
-                if conta == 255:
-                    print(hex(addr))
-                if conta == 256:
-                    conta = 0
+                if conta == 0:
+                    print()
+                    print(hex(i) + ' ', end='')
+                if conta == 63:
+                    conta = -1
                 conta += 1
                 ser.write(b'\x52')
                 ser.write(bytes([addr//256])) # high address byte
                 ser.write(bytes([addr%256]))  # low address byte
                 k = int(ser.readline().decode('utf-8'), 16)
                 if k != ih[addr]:
-                    print('Error at address' + hex(addr))
-                    print('Got %d, was %d' % (k, ih[addr]))
+                    #print('Error at address' + hex(addr))
+                    #print('Got %d, was %d' % (k, ih[addr]))
                     err = True
-
+                    print('E', end = '')
+                else:
+                    print('.', end = '')
+        print()                        
         if not err:
-            print('Verification complete.')
-
+            print('Program verification complete.')
+        else:
+            print('Program verification faillure.')
     ser.write(b'\x40') # End programming
     print(ser.readline().decode('utf-8'))
     print('Done.')

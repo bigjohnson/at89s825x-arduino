@@ -6,14 +6,16 @@
 // RST:  pin 9
 // MOSI: pin 11
 // MISO: pin 12
-// SCK:  pin 13
+// SCK:  pin 13 
 
 #include <SPI.h>
 
 #define RSTPin 9
 #define MOSIPin 11
 #define MISOPin 12
-#define SCKPin 13
+#define SCKPin 13 // If you can, remove the pin 13 connected led or led resistor,
+                  // if you will connect a led on port 1.7 and don't remove the Arduinos's led,
+                  // the AT89S805x connected led will be alwais on if the programmer is connected...
 
 unsigned char pgm_instruction = 0;
 unsigned int pgm_address = 0;

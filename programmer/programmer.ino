@@ -417,7 +417,6 @@ void loop() {
         Serial.println("Programming mode disabled.");
         // Set outputs to inputs (high impedance mode)
         SPI.end();
-        digitalWrite(RSTPin, LOW);
         pinMode(MOSIPin, INPUT);
         pinMode(MISOPin, INPUT);
         pinMode(SCKPin, INPUT);

@@ -37,7 +37,7 @@ The program and data file names are in config.py
 
 ### AT89S8252
 
-Program the microcontroller by running the script `writeprogram.py`, before programming you need erase the micro with eraser.py.
+Program the microcontroller by running the script `writeprogram.py`, before programming you need erase the micro with `eraser.py`.
 
 * If you want erase the chip run `eraser.py` it erase both program and data space.
 * If you want dump the program from chip to file run `readprogram.py`
@@ -49,7 +49,7 @@ Program the microcontroller by running the script `writeprogram.py`, before prog
 
 ### AT89S8253
 
-Program the microcontroller by running the script `writeprogram3.py`, before programming you need erase the micro with eraser3.py.
+Program the microcontroller by running the script `writeprogram3.py`, before programming you need erase the micro with `eraser3.py`.
 
 * If you want program the microcontroller fast use `writeprogramfast3.py`
 * If you want erase the chip run `eraser3.py` it erase both program and data space.

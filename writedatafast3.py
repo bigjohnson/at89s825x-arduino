@@ -31,7 +31,7 @@ with serial.Serial(p, 9600) as ser:
     print('Programming...')
     print(ser.readline().decode('utf-8'))
     ultimo = 0
-    for i in range(0, len(ih.addresses()), 64):
+    for i in range(0, len(ih.addresses()), 32):
         addr = ih.addresses()[i]
         if addr < at89s8253_max_program:
             #if conta == 255:
@@ -51,17 +51,17 @@ with serial.Serial(p, 9600) as ser:
             print()
             ser.readline()
     
-    if ultimo != ih.addresses()[len(ih.addresses()) - 2 ]:
+    #if ultimo != ih.addresses()[len(ih.addresses()) - 2 ]:
         #print('manca ultimo:' + hex(ultimo) + ' len:' + hex(ih.addresses()[len(ih.addresses()) - 2]))
-        for i in range(ultimo + 1, len(ih.addresses())):
-            addr = ih.addresses()[i]
-            if addr < at89s8253_max_program:
-                ser.write(b'\x65')
-                ser.write(bytes([addr//256])) # high address byte
-                ser.write(bytes([addr%256]))  # low address byte
-                ser.write(bytes([ih[addr]]))  # data byte
+    #    for i in range(ultimo + 1, len(ih.addresses())):
+    #       addr = ih.addresses()[i]
+    #        if addr < at89s8253_max_program:
+    #            ser.write(b'\x65')
+    #            ser.write(bytes([addr//256])) # high address byte
+    #            ser.write(bytes([addr%256]))  # low address byte
+    #            ser.write(bytes([ih[addr]]))  # data byte
                 #time.sleep(0.05)
-                ser.readline()
+    #            ser.readline()
                 
     #a = input('Programming done. Do you wish to verify? y/n: ')
     #conta = 0
@@ -69,7 +69,7 @@ with serial.Serial(p, 9600) as ser:
     if  a == 'Y' or a == 'y':
         print('Verifying...')
         err = False
-        for i in range(0, len(ih.addresses()), 64):
+        for i in range(0, len(ih.addresses()), 32):
             addr = ih.addresses()[i]
             #print(hex(i) + " ", end = '')
             if addr < at89s8253_max_program:
@@ -88,19 +88,19 @@ with serial.Serial(p, 9600) as ser:
                         err = True
                 print()
                         
-        if ultimo != ih.addresses()[len(ih.addresses()) - 2 ]:
+      #  if ultimo != ih.addresses()[len(ih.addresses()) - 2 ]:
             #print('manca ultimo:' + hex(ultimo) + ' len:' + hex(ih.addresses()[len(ih.addresses()) - 2]))
-            for i in range(ultimo + 1, len(ih.addresses())):
-                addr = ih.addresses()[i]
-                if addr < at89s8253_max_program:
-                    ser.write(b'\x64')
-                    ser.write(bytes([addr//256])) # high address byte
-                    ser.write(bytes([addr%256]))  # low address byte
-                    k = int(ser.readline().decode('utf-8'), 16)
-                    if k != ih[addr]:
-                        print('Error at address' + hex(addr))
-                        print('Got %d, was %d' % (k, ih[addr]))
-                        err = True    
+       #     for i in range(ultimo + 1, len(ih.addresses())):
+       #         addr = ih.addresses()[i]
+       #         if addr < at89s8253_max_program:
+       #             ser.write(b'\x64')
+       #             ser.write(bytes([addr//256])) # high address byte
+       #             ser.write(bytes([addr%256]))  # low address byte
+       #             k = int(ser.readline().decode('utf-8'), 16)
+       #             if k != ih[addr]:
+       #                 print('Error at address' + hex(addr))
+       #                print('Got %d, was %d' % (k, ih[addr]))
+       #                 err = True    
                 
         if not err:
             print('Verification complete.')

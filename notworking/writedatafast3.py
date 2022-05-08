@@ -91,8 +91,8 @@ with serial.Serial(p, 9600) as ser:
                         print('.', end = '')
                 print()
                         
-      #  if ultimo != ih.addresses()[len(ih.addresses()) - 2 ]:
-            #print('manca ultimo:' + hex(ultimo) + ' len:' + hex(ih.addresses()[len(ih.addresses()) - 2]))
+        if ultimo != ih.addresses()[len(ih.addresses()) - 2 ]:
+            print('manca ultimo:' + hex(ultimo) + ' len:' + hex(ih.addresses()[len(ih.addresses()) - 2]))
        #     for i in range(ultimo + 1, len(ih.addresses())):
        #         addr = ih.addresses()[i]
        #         if addr < at89s8253_max_program:

@@ -52,7 +52,17 @@ with serial.Serial(p, 9600) as ser:
             ser.readline()
     
     #if ultimo != ih.addresses()[len(ih.addresses()) - 2 ]:
-        #print('manca ultimo:' + hex(ultimo) + ' len:' + hex(ih.addresses()[len(ih.addresses()) - 2]))
+    #    print('manca ultimo:' + hex(ultimo) + ' len:' + hex(ih.addresses()[len(ih.addresses()) - 2]))
+    #    addr = ultimo + 1;
+    #    ser.write(b'\x74')
+    #    ser.write(bytes([addr//256])) # high address byte
+    #    ser.write(bytes([addr%256]))  # low address byte
+    #    for o in range(0, 64):
+    #        ultimo = addr + o;
+    #        ser.write(bytes([ih[ultimo]]))  # data byte
+    #        print('.', end = '')
+    #    print()
+        
      #   for i in range(ultimo + 1, len(ih.addresses())):
      #       addr = ih.addresses()[i]
      #       if addr < at89s8253_max_program:

@@ -51,23 +51,23 @@ Program the microcontroller by running the script `writeprogram.py`, before prog
 
 Program the microcontroller by running the script `writeprogram3.py`, before programming you need erase the micro with `eraser3.py`.
 
-* If you want program the microcontroller fast use `writeprogramfast3.py`
+~~* If you want program the microcontroller fast use `writeprogramfast3.py`~~
 * If you want erase the chip run `eraser3.py` it erase both program and data space.
 * If you want dump the program from chip to file run `readprogram3.py`
-* If you want dump the program fast from chip to file run `readprogramfast3.py`
+~~* If you want dump the program fast from chip to file run `readprogramfast3.py`~~
 * If you want check the chip program from a file run `verifyprogram3.py`
-* If you want check the chip program fast from a file run `verifyprogramfast3.py`
+~~* If you want check the chip program fast from a file run `verifyprogramfast3.py`~~
 * If you want write data to chip run `writedata3.py`.
-* If you want write data fast to chip run `writedatafast3.py`.
+~~* If you want write data fast to chip run `writedatafast3.py`.~~
 * If you want dump the data from chip to file run `readdata3.py`
-* If you want dump the data fast from chip to file run `readdatafast3.py`
+~~* If you want dump the data fast from chip to file run `readdatafast3.py`~~
 * If you want check the chip data from a file run `verifydata3.py`
-* If you want check the chip data fast from a file run `verifydatafast3.py`
+~~* If you want check the chip data fast from a file run `verifydatafast3.py`~~
 * If you want program lock bits on chip `writelock3.py` (actually unimplemented)
 * If you want program fuses bits on chip `writefuses3.py` (actually unimplemented)
 * If you want read lock bits on chip `readlock3.py`
 * If you want read fuses bits on chip `readfuses3.py`
 
-the fast version of the programs use the new page mode of the AT89S8253
+~~the fast version of the programs use the new page mode of the AT89S8253~~
 
 

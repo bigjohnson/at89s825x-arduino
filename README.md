@@ -42,9 +42,11 @@ Program the microcontroller by running the script `writeprogram.py`, before prog
 * If you want erase the chip run `eraser.py` it erase both program and data space.
 * If you want dump the program from chip to file run `readprogram.py`
 * If you want check the chip program from a file run `verifyprogram.py`
+* If you want check if the chip program is empty run `verifyemptyprogram.py`
 * If you want write data to chip run `writedata.py`.
 * If you want dump the data from chip to file run `readdata.py`
 * If you want check the chip data from a file run `verifydata.py`
+* If you want check if the chip data is empty run `verifyemptydata.py`
 * If you want program lock bits on chip `writelock.py`
 
 ### AT89S8253
@@ -57,16 +59,23 @@ Program the microcontroller by running the script `writeprogram3.py`, before pro
 * If you want dump the program fast from chip to file run `readprogramfast3.py`
 * If you want check the chip program from a file run `verifyprogram3.py`
 * If you want check the chip program fast from a file run `verifyprogramfast3.py`
+* If you want check if the chip program is empty run `verifyemptyprogram3.py`
+* If you want check fast if the chip program is empty run `verifyemptyprogramfast3.py`
 * If you want write data to chip run `writedata3.py`.
 * If you want write data fast to chip run `writedatafast3.py`.
 * If you want dump the data from chip to file run `readdata3.py`
 * If you want dump the data fast from chip to file run `readdatafast3.py`
 * If you want check the chip data from a file run `verifydata3.py`
 * If you want check the chip data fast from a file run `verifydatafast3.py`
+* If you want check if the chip data is empty run `verifyemptydata3.py`
+* If you want check fast if the chip data is empty run `verifyemptydata3.py`
 * If you want program lock bits on chip `writelock3.py` (actually unimplemented)
 * If you want program fuses bits on chip `writefuses3.py` (actually unimplemented)
 * If you want read lock bits on chip `readlock3.py`
 * If you want read fuses bits on chip `readfuses3.py`
+* If you want read Atmel signature from chip `readatmelsgn3.py`
+* If you want write user signature from chip `writeusersgn3.py`
+* If you want read user signature from chip `readusersgn3.py`
 
 the fast version of the programs use the new page mode of the AT89S8253
 

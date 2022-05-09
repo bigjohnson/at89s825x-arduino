@@ -68,18 +68,19 @@ with serial.Serial(p, 9600) as ser:
  #   if  a == 'Y' or a == 'y':
     print('Verifying...')
     err = False
-    for i in range(0, len(ih.addresses()), 64):
-        addr = ih.addresses()[i]
+    #for i in range(0, len(ih.addresses()), 64):
+    for i in range(0x0, at89s8253_max_program, 64):
+        #addr = ih.addresses()[i]
         #print(hex(i) + " ", end = '')
-        if addr < at89s8253_max_program:
+        if i < at89s8253_max_program:
             print(hex(i) + " ", end = '')
             ser.write(b'\x72')
-            ser.write(bytes([addr//256])) # high address byte
-            ser.write(bytes([addr%256]))  # low address byte
+            ser.write(bytes([ultimo//256])) # high address byte
+            ser.write(bytes([ultimo%256]))  # low address byte
             for o in range(0, 64):
                 k = int(ser.readline().decode('utf-8'), 16)
                 #print('.', end = '')
-                ultimo = addr + o;
+                
                 if k != ih[ultimo]:
                     #print()
                     #print('Error at address' + hex(addr))
@@ -88,8 +89,10 @@ with serial.Serial(p, 9600) as ser:
                     err = True
                 else:
                     print('.', end = '')
+                ultimo = ultimo + 1;
             print()
-                    
+            if ultimo > ih.maxaddr():
+                break       
        # if ultimo != ih.addresses()[len(ih.addresses()) - 2 ]:
             #print('manca ultimo:' + hex(ultimo) + ' len:' + hex(ih.addresses()[len(ih.addresses()) - 2]))
        #     for i in range(ultimo + 1, len(ih.addresses())):

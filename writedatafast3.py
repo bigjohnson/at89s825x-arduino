@@ -31,9 +31,10 @@ with serial.Serial(p, 9600) as ser:
     print('Programming...')
     print(ser.readline().decode('utf-8'))
     ultimo = 0
-    for i in range(0, len(ih.addresses()), 32):
-        addr = ih.addresses()[i]
-        if addr < at89s8253_max_program:
+    #for i in range(0, len(ih.addresses()), 32):
+    for i in range(0, at89s8253_max_data, 32):
+        #addr = ih.addresses()[i]
+        if i < at89s8253_max_data:
             #if conta == 255:
             #    print(hex(addr))
             #if conta == 256:
@@ -41,15 +42,18 @@ with serial.Serial(p, 9600) as ser:
             #conta += 1
             print(hex(i) + " ", end = '')
             ser.write(b'\x75')
-            ser.write(bytes([addr//256])) # high address byte
-            ser.write(bytes([addr%256]))  # low address byte
+            ser.write(bytes([ultimo//256])) # high address byte
+            ser.write(bytes([ultimo%256]))  # low address byte
             for o in range(0, 32):
-                ultimo = addr + o;
+                
                 ser.write(bytes([ih[ultimo]]))  # data byte
                 print('.', end = '')
+                ultimo = ultimo + 1;
             #time.sleep(0.05)
             print()
             ser.readline()
+            if ultimo > ih.maxaddr():
+                break
     
     #if ultimo != ih.addresses()[len(ih.addresses()) - 2 ]:
         #print('manca ultimo:' + hex(ultimo) + ' len:' + hex(ih.addresses()[len(ih.addresses()) - 2]))
@@ -66,21 +70,23 @@ with serial.Serial(p, 9600) as ser:
     #a = input('Programming done. Do you wish to verify? y/n: ')
     #conta = 0
     a = 'y'
+    ultimo = 0
     if  a == 'Y' or a == 'y':
         print('Verifying...')
         err = False
-        for i in range(0, len(ih.addresses()), 32):
+        #for i in range(0, len(ih.addresses()), 32):
+        for i in range(0, at89s8253_max_data, 32):
             addr = ih.addresses()[i]
             #print(hex(i) + " ", end = '')
-            if addr < at89s8253_max_program:
+            if addr < at89s8253_max_data:
                 print(hex(i) + " ", end = '')
                 ser.write(b'\x73')
-                ser.write(bytes([addr//256])) # high address byte
-                ser.write(bytes([addr%256]))  # low address byte
+                ser.write(bytes([ultimo//256])) # high address byte
+                ser.write(bytes([ultimo%256]))  # low address byte
                 for o in range(0, 32):
                     k = int(ser.readline().decode('utf-8'), 16)
                     #print('.', end = '')
-                    ultimo = addr + o;
+                    
                     if k != ih[ultimo]:
                         #print()
                         #print('Error at address' + hex(addr))
@@ -89,10 +95,13 @@ with serial.Serial(p, 9600) as ser:
                         err = True
                     else:
                         print('.', end = '')
+                    ultimo = ultimo + 1;
                 print()
+                if ultimo > ih.maxaddr():
+                    break
                         
-        if ultimo != ih.addresses()[len(ih.addresses()) - 2 ]:
-            print('manca ultimo:' + hex(ultimo) + ' len:' + hex(ih.addresses()[len(ih.addresses()) - 2]))
+       # if ultimo != ih.addresses()[len(ih.addresses()) - 2 ]:
+       #     print('manca ultimo:' + hex(ultimo) + ' len:' + hex(ih.addresses()[len(ih.addresses()) - 2]))
        #     for i in range(ultimo + 1, len(ih.addresses())):
        #         addr = ih.addresses()[i]
        #         if addr < at89s8253_max_program:

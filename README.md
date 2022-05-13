@@ -77,6 +77,8 @@ Program the microcontroller by running the script `writeprogram3.py`, before pro
 * If you want write user signature from chip `writeusersgn3.py`
 * If you want read user signature from chip `readusersgn3.py`
 
+![8052Explorer](https://raw.githubusercontent.com/bigjohnson/bigjohnson.github.io/master/8052Explorer/8052Explorer.jpg)
+
 the fast version of the programs use the new page mode of the AT89S8253
 
 

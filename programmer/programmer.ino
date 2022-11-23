@@ -1,4 +1,4 @@
-// AT89S8252 Programmer
+// AT89S8252/3 Programmer
 // Author: mtirado
 
 // Arduino Pin Connections
